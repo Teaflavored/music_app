@@ -17,6 +17,7 @@
   <% end %>
   
   <% if logged_in? %>
+    logged in as <%= current_user.email %>
     <%= button_to "Sign out!", "/session" , method: :delete %>
   <% else %>
     <% link_to "Sign in!", new_session_url %>

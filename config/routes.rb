@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: "sessions#new"
   resources :users do
     get 'activate'
+    post 'admin'
   end
   resource :session, only: [:new, :create, :destroy]
   resources :bands do

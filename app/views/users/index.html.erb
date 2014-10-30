@@ -2,7 +2,12 @@
 <ul>
   <% @users.each do |user| %>
     <li><%= user.email %>
-      <%= button_to "Delete user", user_url(user), method: :delete %>
+      <% unless user.admin?%>
+        <%= button_to "Delete user", user_url(user), method: :delete %>
+      <% end %>
+      <% unless user.admin? %>
+        <%= link_to "Make admin", user_admin_url(user), method: :post %>
+      <% end %>
     </li>
   <% end %>
 </ul>
