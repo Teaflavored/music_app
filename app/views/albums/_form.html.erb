@@ -1,0 +1,43 @@
+<form action="<%= action_url  %>"
+      method="POST">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+  
+  <% if action == "PATCH" %>
+    <input type="hidden"
+           name="_method"
+           value="PATCH">
+  <% end %>
+  <%= render "layouts/errors" %>
+  <label for="album_name">Album name</label>
+  <input type="text"
+         name="album[name]"
+         value="<%= album.name %>"
+         id="album_name">
+  <br>
+  
+  <label for="album_band">
+  <select name="album[band_id]"
+          id="album_band">
+    <option selected value="<%= band.id %>"><%= band.name %>
+    </option>
+  </select>
+  <br>
+  
+  <label for="album_type_live">Live
+  <input type="radio" 
+         name="album[album_type]" 
+         id="album_type_live"
+         value="live"
+         <%= "checked" if album.album_type == "live" %>>
+         
+  <label for="album_type_studio">Studio
+  <input type="radio" 
+         name="album[album_type]" 
+         id="album_type_studio"
+         value="studio"
+         <%= "checked" if album.album_type == "studio" %>>
+  <br>
+  <input type="submit" value="<%= msg %>">
+</form>

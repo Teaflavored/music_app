@@ -1,0 +1,12 @@
+<h1>Edit album for <%= @band.name %></h1>
+
+<% action_url = album_url %>
+<% sub_msg = "Edit the album" %>
+<%= render "albums/form",
+    action_url: action_url,
+    band: @band,
+    msg: sub_msg,
+    action: "PATCH",
+    album: @album%>
+<br>
+<%= link_to "back to band, #{@band.name}", band_url(@band) %>

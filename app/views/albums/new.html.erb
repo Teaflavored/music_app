@@ -1,0 +1,12 @@
+<h1>Add a new album</h1>
+
+<% action_url = albums_url %>
+<% sub_msg = "Add a album!" %>
+<%= render "albums/form",
+    action_url: action_url,
+    band: @band,
+    msg: sub_msg,
+    action: "POST",
+    album: @album%>
+<br>
+<%= link_to "Back to band, #{@band.name}", band_url(@band) %>
