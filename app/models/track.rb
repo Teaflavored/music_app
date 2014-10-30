@@ -12,7 +12,7 @@
 
 class Track < ActiveRecord::Base
   TRACK_TYPES = ["bonus", "regular"]
-  validates :track_type, :album, presence: true
+  validates :track_type, :album, :name, presence: true
   validates :track_type, inclusion: { in: TRACK_TYPES }
   
   belongs_to :album

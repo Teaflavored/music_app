@@ -1,12 +1,12 @@
-<h1>Add a new track!</h1>
+<h1>Edit the track in album <%= @album.name %></h1>
 
-<% action_url = tracks_url %>
-<% sub_msg = "Add a track!" %>
+<% action_url = track_url %>
+<% sub_msg = "Edit the track!" %>
 <%= render "tracks/form",
     action_url: action_url,
     msg: sub_msg,
     album: @album,
     track: @track,
-    action: "POST"%>
-<br>  
+    action: "PATCH"%>
+<br>
 <%= link_to "Back to album #{@album.name}", album_url(@album) %>

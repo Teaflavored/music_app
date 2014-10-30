@@ -1,0 +1,9 @@
+<h1>Showing song <%= @track.name %> within album <%= @album.name %></h1>
+<%= link_to "Edit track", edit_track_url(@track) %>
+<%= button_to "Delete track", track_url(@track), method: :delete %>
+<h2>Lyrics</h2>
+<p>
+  <%= @track.lyrics%>
+  
+</p>
+<%= link_to "Back to album #{@album.name}", album_url(@album) %>

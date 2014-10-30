@@ -1,4 +1,4 @@
-<h1>Showing band: <%= @band.name %></h1>
+<h1>Showing band: <%= @band.name %>, it currently has <%= @albums.length %> albums</h1>
 <%= link_to "Edit band", edit_band_url(@band) %>
 <%= button_to "Delete band", band_url(@band), method: :delete %>
 <h2>All albums by <%= @band.name %></h2>
