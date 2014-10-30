@@ -12,12 +12,13 @@
 
 class User < ActiveRecord::Base
   attr_reader :password
-  validates :email, :session_token, presence: true
+  validates :email, :session_token, :activation_token, presence: true
+  validates :email, uniqueness: true
   validates :password_digest, presence: { message: "Password must be present" }
   validates :password, length: { minimum: 4, allow_nil: true }
   #need to ensure user can have password digest through password=
   #need to ensure user has valid session token when initialized
-  after_initialize :ensure_session_token
+  after_initialize :ensure_session_token, :ensure_activation_token
   before_save :downcase_email
   
   
@@ -57,6 +58,10 @@ class User < ActiveRecord::Base
   
     def ensure_session_token
       self.session_token ||= self.class.generate_session_token
+    end
+    
+    def ensure_activation_token
+      self.activation_token ||= self.class.generate_session_token
     end
     
     def downcase_email

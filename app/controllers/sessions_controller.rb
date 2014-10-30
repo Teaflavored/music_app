@@ -14,9 +14,14 @@ class SessionsController < ApplicationController
       flash.now[:errors] = ["Invalid Credentials"]
       render :new
     else
-      sign_in(user)
-      #need sign in logic with session tokens
-      redirect_to user_url(user)
+      if user.activated?
+        sign_in(user)
+        #need sign in logic with session tokens
+        redirect_to user_url(user)
+      else
+        flash[:activate_errors] = ["Must activate account!"]
+        redirect_to new_session_url
+      end
     end
   end
   

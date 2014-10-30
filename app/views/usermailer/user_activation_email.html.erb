@@ -1,0 +1,9 @@
+<h1>Welcome to my music app, <%= @user.email %></h1>
+
+<p>
+  The first step is for you to click the link and activate your account
+</p>
+
+<p>
+  <%= link_to "Activation Link", user_activate_url(@user, token: @activation_token)%>
+</p>

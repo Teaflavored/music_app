@@ -1,0 +1,8 @@
+<h1>All users</h1>
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.email %>
+      <%= button_to "Delete user", user_url(user), method: :delete %>
+    </li>
+  <% end %>
+</ul>

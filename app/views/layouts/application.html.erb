@@ -7,6 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% if flash[:success] || flash[:activate_errors] %>
+    <% msgs = flash[:success] || flash[:activate_errors] %>
+    <ul>
+      <% msgs.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
   <% if logged_in? %>
     <%= button_to "Sign out!", "/session" , method: :delete %>
   <% else %>

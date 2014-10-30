@@ -7,13 +7,13 @@ class UsersController < ApplicationController
     render :new
   end
   
-  
   def create
     @user = User.new(user_params)
     if @user.save
-      sign_in(@user)
       #still need to log user in
-      redirect_to user_url(@user)
+      Usermailer.user_activation_email(@user).deliver
+      flash[:success] = ["Successfully created"]
+      redirect_to new_session_url
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
@@ -30,9 +30,24 @@ class UsersController < ApplicationController
     render :index
   end
   
+  def activate
+    user = User.find_by(activation_token: params[:token])
+    if user
+      user.toggle!(:activated)
+      user.save!
+      flash[:success] = ["Successfully activated"]
+      sign_in(user)
+      redirect_to user_url(user)
+    else
+      flash[:activate_errors] = ["User is not activated"]
+      redirect_to new_session_url
+    end
+  end
+  
   private
   
     def user_params
       params.require(:user).permit(:email, :password)
     end
+    
 end
