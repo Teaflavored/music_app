@@ -26,4 +26,8 @@ class ApplicationController < ActionController::Base
   def redirect_to_show_page_if_logged_in
     redirect_to user_url(current_user) unless current_user.nil?
   end
+  
+  def redirect_to_sign_in_if_not_logged_in
+    redirect_to new_session_url unless logged_in?
+  end
 end

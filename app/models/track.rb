@@ -8,6 +8,7 @@
 #  album_id   :integer          not null
 #  track_type :string(255)      not null
 #  lyrics     :text
+#  name       :string(255)      not null
 #
 
 class Track < ActiveRecord::Base
@@ -17,4 +18,5 @@ class Track < ActiveRecord::Base
   
   belongs_to :album
   has_one :band, through: :album, source: :band
+  has_many :notes, dependent: :destroy
 end

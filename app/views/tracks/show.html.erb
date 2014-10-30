@@ -6,4 +6,11 @@
   <%= @track.lyrics%>
   
 </p>
+
+<h2>Notes</h2>
+<%= render "notes/note", notes: @track.notes %>
+<br>
+<h2>Make a note</h2>
+<%= render "notes/form", track: @track %>
+<!-- need to add partial to notes -->
 <%= link_to "Back to album #{@album.name}", album_url(@album) %>

@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
   before_save :downcase_email
   
+  
+  has_many :notes, dependent: :destroy
+  
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email.downcase)
     return nil if user.nil?

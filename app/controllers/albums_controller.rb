@@ -1,4 +1,5 @@
 class AlbumsController < ApplicationController
+  before_action :redirect_to_sign_in_if_not_logged_in
   def show
     @album = Album.find(params[:id])
     @tracks = @album.tracks
