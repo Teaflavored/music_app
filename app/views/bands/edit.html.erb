@@ -1,0 +1,13 @@
+<h1>Editing a band</h1>
+
+<% action = "PATCH" %>
+<% action_url = band_url %>
+<% sub_msg = "Edit band" %>
+<%= render "bands/form", 
+    band: @band, 
+    msg: sub_msg, 
+    action: action,
+    action_url: action_url%>
+    
+
+<%= link_to "Back to bands list", bands_url %>

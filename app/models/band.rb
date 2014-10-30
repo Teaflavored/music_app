@@ -10,7 +10,7 @@
 
 class Band < ActiveRecord::Base
   validates :name, presence: true
-  
-  has_many :albums
+  default_scope { order("created_at") }
+  has_many :albums, dependent: :destroy
   has_many :tracks, through: :albums, source: :tracks
 end

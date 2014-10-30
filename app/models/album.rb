@@ -16,5 +16,5 @@ class Album < ActiveRecord::Base
   validates :album_type, inclusion: { in: ALBUM_TYPES }
   
   belongs_to :band
-  has_many :tracks
+  has_many :tracks, dependent: :destroy
 end

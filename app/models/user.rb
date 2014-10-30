@@ -18,9 +18,10 @@ class User < ActiveRecord::Base
   #need to ensure user can have password digest through password=
   #need to ensure user has valid session token when initialized
   after_initialize :ensure_session_token
+  before_save :downcase_email
   
   def self.find_by_credentials(email, password)
-    user = User.find_by(email: email)
+    user = User.find_by(email: email.downcase)
     return nil if user.nil?
     return nil unless user.is_password?(password)
     
@@ -53,5 +54,9 @@ class User < ActiveRecord::Base
   
     def ensure_session_token
       self.session_token ||= self.class.generate_session_token
+    end
+    
+    def downcase_email
+      self.email = self.email.downcase
     end
 end

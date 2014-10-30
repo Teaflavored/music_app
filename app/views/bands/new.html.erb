@@ -1,0 +1,12 @@
+<h1>Adding a new band</h1>
+
+<% action_url = bands_url %>
+<% sub_msg = "Add a band" %>
+<% action = "POST" %>
+<% render "bands/form", 
+   band: @band, 
+   msg: sub_msg, 
+   action: action,
+   action_url: action_url %>
+
+<%= link_to "Back to bands list", bands_url %>
