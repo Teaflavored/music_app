@@ -6,6 +6,25 @@
 <br>
 <h2>All tracks on this album</h2>
 
+<table class="table fixed table-striped">
+  <thead>
+    <th>#</th>
+    <th>Track name</th>
+    <th>Track type</th>
+    <th>Band</th>
+    <th>More Info</th>
+  </thead>
+  
+  <% @tracks.each_with_index do |track, idx| %>
+    <tr>
+      <td><%= idx + 1%></td>
+      <td><%= track.name %></td>
+      <td><%= track.track_type %></td>
+      <td><%= track.band.name %></td>
+      <td><%= link_to "More info", track_url(track)%></td>
+    </tr>
+  <% end %>
+</table>
 <ul>
   <% @tracks.each do |track| %>
     <li><%= link_to track.name, track_url(track) %></li>

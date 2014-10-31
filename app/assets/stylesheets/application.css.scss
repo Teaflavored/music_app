@@ -13,3 +13,46 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+a.navbar-brand{
+  font-family: 'Arvo', serif;
+  font-size: 34px;
+  font-color: black;
+}
+
+.collapse.navbar-collapse.navbar{
+  margin-bottom:-10px;
+}
+
+
+ul.nav.navbar-nav{
+  padding-left:50px;
+  font-size: 22px;
+  font-family: 'Arvo', serif;
+}
+
+.navbar{
+   background-color: transparent;
+   background: transparent;
+}
+
+.navbar li{ 
+  color: #000 
+} 
+body{
+  margin-top: 60px;
+}
+
+.navbar-default{
+  border-color:white;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form{
+  border-color:white;
+}
+
+table.fixed{ 
+  table-layout:fixed; 
+}

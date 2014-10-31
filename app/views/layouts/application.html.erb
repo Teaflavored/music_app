@@ -4,25 +4,25 @@
   <title>MusicApp</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
+<%= render "layouts/navbar" %>
+<hr style="margin-bottom:0px;">
 <body>
-  <% if flash[:success] || flash[:activate_errors] %>
-    <% msgs = flash[:success] || flash[:activate_errors] %>
-    <ul>
-      <% msgs.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
   
-  <% if logged_in? %>
-    logged in as <%= current_user.email %>
-    <%= button_to "Sign out!", "/session" , method: :delete %>
-  <% else %>
-    <% link_to "Sign in!", new_session_url %>
-  <% end %>
-<%= yield %>
-
+      <% if flash[:success] || flash[:activate_errors] %>
+        <% msgs = flash[:success] || flash[:activate_errors] %>
+        <ul>
+          <% msgs.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
+ 
 </html>
