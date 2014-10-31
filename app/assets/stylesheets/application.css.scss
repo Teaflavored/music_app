@@ -56,3 +56,32 @@ body{
 table.fixed{ 
   table-layout:fixed; 
 }
+
+.navbar-default .navbar-nav > li > a{
+  color:black;
+  font-size:25px;
+  margin-top:5px;
+}
+
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand{
+  color:black;
+  margin-top:4px;
+}
+
+.btn-primary.nav-button{
+  color:black;
+  background-color:white;
+  font-size:25px;
+  border-style:none;
+  font-family:'arvo', serif;
+  padding-top:1px;
+}
+
+h1.main_page_heading{
+  font-size:100px;
+  margin-top:140px;
+}
+
+.sign-in-link{
+  margin-top:168px;
+}
